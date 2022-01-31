@@ -1,10 +1,21 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
 cff-version: 1.2.0
-message: "If you use this software, please cite it as below."
+title: Buscogeny
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
 authors:
-  - family-names: Webster
-    given-names: John
-    orcid:  https://orcid.org/0000-0003-0441-6620 
-title: "Buscogeny"
-version: 1.0
-doi:
-date-released: 2022-02-01
+  - name-particle: John
+    family-names: Webster
+    email: john.webster@dpi.nsw.gov.au
+    affiliation: NSW DPI
+    orcid: 'https://orcid.org/0000-0003-0441-6620'
+repository-code: 'https://github.com/Jwebster89/Buscogeny'
+url: 'https://github.com/Jwebster89/'
+license: GPL-3.0
+commit: 5f13859aa0fd814c12a8346604263a0d08e8c08c
+version: '1.0'
+date-released: '2022-02-01'
