@@ -17,7 +17,7 @@ Buscogeny can be run as follows with the hypocreales_odb10 database as an exampl
 ## Running BUSCO
 Below is an example loop for running BUSCO prior to running Buscogeny. Note, the output folder will be named Genome1.fna_busco512_odb10 in the below example, this is important (for now). Please use this format to run BUSCO.
 ```
-for file in ./input/*.fna ; do base=$(basename $file) ; busco -i $file -o ${base}_busco512_odb10 -m genome -l verticillium_longisporum1 -l ./hypocreales_odb10 ; done
+for file in ./input/*.fna ; do base=$(basename $file) ; busco -i $file -o ${base}_busco512_odb10 -m genome -l ./hypocreales_odb10 ; done
 ```
 
 ## Options and usage
