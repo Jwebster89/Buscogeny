@@ -25,7 +25,7 @@ Buscogeny can be run as follows with the hypocreales_odb10 database as an exampl
 
 `buscogeny.py -i ./Folder_of_BUSCO_outputs/ -d ./hypocreales_odb10`
 
-	
+
 ## Options and usage
 ```
 
