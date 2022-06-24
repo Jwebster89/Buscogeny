@@ -123,7 +123,7 @@ def main():
 
 	optional = parser.add_argument_group('Optional Arguments')
 	optional.add_argument("-h", "--help", action="help", help="show this help message and exit")
-	optional.add_argument("-t", "--threads", type=str, required=False, default=8, help="Number of threads to use. Default 8")
+	optional.add_argument("-t", "--threads", type=str, required=False, default='8', help="Number of threads to use. Default 8")
 
 	args=parser.parse_args()
 	input=args.input
