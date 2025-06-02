@@ -21,7 +21,7 @@ import plotly.io as pio
 from argparse import RawTextHelpFormatter
 
 class Buscogeny():
-	def __init__(self,input, prefix, odb,threads, gap_threshold,exclude_threshold, seq_type, rc_filt):
+	def __init__(self,input, prefix, odb,threads, gap_threshold, exclude_threshold, seq_type, rc_filt):
 		self.input=input
 		self.output=f"{prefix}_Buscogeny_out"
 		self.odb=odb
@@ -415,7 +415,7 @@ def main():
 	optional.add_argument("-h", "--help", action="help", help="show this help message and exit")
 	optional.add_argument("-t", "--threads", type=str, required=False, default='8', help="Number of threads to use. Default 8")
 	optional.add_argument("-g", "--gappy_threshold", type=str, required=False, default='0.05', help="Specifies gaps threshold used by clipkit. Default 0.05")
-	optional.add_argument("-e", "--exclude_threshold", type=str, required=False, default='0.2', help="Specifies proportion of alignments an isolate is allowed to be missing from.")
+	optional.add_argument("-e", "--exclude_threshold", type=str, required=False, default='0.2', help="Specifies proportion of alignments an isolate is allowed to be missing from. Default 0.2")
 	optional.add_argument("-s", "--seq_type", type=str, choices=['prot', 'nucl'], default='prot', help="Alignment using: 'prot' for protein, 'nucl' for nucleotide. Default is 'prot'.")
 	optional.add_argument("-r", "--rc_filt", action='store_true', help="Enable recombination filtering")
 

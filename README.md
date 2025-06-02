@@ -28,9 +28,17 @@ pip install alive-progress
 
 
 ## Quick Usage
-Buscogeny can be run as follows with the hypocreales_odb10 database and 60 threads as an example
+Buscogeny can be run as follows with the hypocreales_odb10 database and 60 threads as an example. Note this runs in protein mode as default.
 
-`buscogeny.py -i ./Folder_of_genomes -d ./hypocreales_odb10 -t 60`
+`buscogeny.py -i ./Folder_of_genomes -o ./outdir_hypocreales -d ./hypocreales_odb10 -t 60`
+
+With recombination filtering on a set of bacterial genomes, in nucleotide mode.
+
+`buscogeny.py -i ./Folder_of_genomes -o ./outdir_bac_rcfilt -d ./bacteria_odb12 -t 60 -s nucl -r`
+
+With strict filtering critera. Isolates can't be missing in 5% or more aligned buscos, and the final alignment is stripped of alignment positions with 1% or more gaps.
+
+`buscogeny.py -i ./Folder_of_genomes -o ./outdir_bac_strict -d ./bacteria_odb12 -t 60 -s nucl -e 0.05 -g 0.01`
 
 ## Output
 ```
