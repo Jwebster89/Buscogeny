@@ -88,7 +88,7 @@ usage: buscogeny.py -i INPUT -d DB -o OUTPUT [-h] [-t THREADS] [-g GAPPY_THRESHO
 
         Create Phylogenies from BUSCO output. 
 
-        Version: 2.0.0
+        Version: 2.1.0
 
 Required Arguments:
   -i INPUT, --input INPUT
@@ -111,7 +111,8 @@ Optional Arguments:
 ```
 ## Notes
 - Please ensure that when specifying the odb database to use a relative or absolute path. E.g. `./bacteria_odb10`, and not `bacteria_odb10`
-- Buscogeny will skip folders if it detects previous output. This can be useful for rerunning if the run is interrupted or you would like to reuse previous BUSCO calculations. However, care should be taken to remove the interupted processes outputs.
+- Buscogeny will skip folders if it detects previous output. This can be useful for rerunning if the run is interrupted or you would like to reuse previous BUSCO calculations. However, care should be taken to remove the interupted process outputs.
 - Recombination filtering is only available on nucleotide sequences, run Buscogeny with `-s nucl` if you plan to also use `-r`.
+- As of Busco 5.7.0, miniprot is the default pipeline Busco uses for Eukaryote genomes. If a Eukaryota odb is used and prot isn't selected for the `--seq_type`, Buscogeny will automatically run Busco in metaeuk mode in order to generate the required nucleotide sequences.
 - A current issue between BUSCO and python results in a "SyntaxWarning: invalid escape sequence '\w'", this is planned to be addressed in the next version of BUSCO.
 - BUSCO odb databases can be downloaded from https://busco-data.ezlab.org/v5/data/lineages/

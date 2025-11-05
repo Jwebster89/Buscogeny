@@ -34,13 +34,43 @@ class Buscogeny():
 		else:
 			self.seq_ext="fna"
 
+	def requires_metaeuk(self):
+		cfg_path = os.path.join(self.odb, "dataset.cfg")
+		if not os.path.exists(cfg_path):
+			print(f"ERROR: dataset.cfg not found in {self.odb}. Please check your BUSCO database path.")
+			sys.exit(1)
+
+		domain = None
+		with open(cfg_path, "r") as f:
+			for line in f:
+				if line.lower().startswith("domain"):
+					domain = line.split("=")[1].strip().lower()
+					break
+
+		if domain is None:
+			print(f"ERROR: No 'domain' entry found in {cfg_path}. Please verify your BUSCO database.")
+			sys.exit(1)
+
+		if domain == "eukaryota":
+			if self.seq_ext == "fna":
+				return(True)
+			else:
+				return(False)
+		else:
+			return(False)
+	
 	def BUSCO(self,input,odb, threads):
+		force_metaeuk = self.requires_metaeuk()
 		if not os.path.exists(f"{self.output}/BUSCO"):
 			os.mkdir(f"{self.output}/BUSCO")
 		for file in os.listdir(input):
 			if not os.path.exists(f"{self.output}/BUSCO/"+os.path.basename(file)+'_busco_out'):
-				subprocess.run(['busco', '-i', f"{input}/{file}", '-o', os.path.basename(file)+'_busco_out','-c',threads,'-m', 'genome', '-l', odb, "--offline"])
-				shutil.move(os.path.basename(file)+'_busco_out',f"{self.output}/BUSCO/"+os.path.basename(file)+'_busco_out')
+				if force_metaeuk:
+					subprocess.run(['busco', '-i', f"{input}/{file}", '-o', os.path.basename(file)+'_busco_out','-c',threads,'-m', 'genome', '-l', odb, "--offline", "--metaeuk"])
+					shutil.move(os.path.basename(file)+'_busco_out',f"{self.output}/BUSCO/"+os.path.basename(file)+'_busco_out')
+				else:
+					subprocess.run(['busco', '-i', f"{input}/{file}", '-o', os.path.basename(file)+'_busco_out','-c',threads,'-m', 'genome', '-l', odb, "--offline"])
+					shutil.move(os.path.basename(file)+'_busco_out',f"{self.output}/BUSCO/"+os.path.basename(file)+'_busco_out')
 			else:
 				print(f"{file} has already been processed by BUSCO, skipping..")
 
